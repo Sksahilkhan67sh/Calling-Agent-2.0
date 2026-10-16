@@ -1,0 +1,16 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Source documents (repo is public; docs stay local)
+docs/source/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
