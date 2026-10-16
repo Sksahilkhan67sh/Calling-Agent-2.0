@@ -1,0 +1,32 @@
+[project]
+name = "calling-agent-backend"
+version = "0.1.0"
+description = "AI Calling Agent backend (Django control plane)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "django>=5.2,<5.3",
+    "djangorestframework",
+    "psycopg[binary,pool]",
+    "dj-database-url",
+    "celery[redis]",
+]
+
+[dependency-groups]
+dev = ["pytest", "pytest-django", "pytest-cov", "ruff"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["docs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "DJ"]
+
+[tool.ruff.lint.per-file-ignores]
+"backend/tests/**" = ["S101", "S105", "S106"]
+
+[tool.pytest.ini_options]
+pythonpath = ["backend"]
+testpaths = ["backend/tests"]
+DJANGO_SETTINGS_MODULE = "config.settings.test"
+addopts = "-ra"
